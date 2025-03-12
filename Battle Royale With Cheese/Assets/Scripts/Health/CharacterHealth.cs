@@ -26,6 +26,7 @@ public class CharacterHealth : MonoBehaviour, ICharacterHealth
     public void ReduceHealth(float amtToReduce)
     {
         _health -= amtToReduce;
+        Debug.Log("reducing health by " + amtToReduce);
         ClampHealth();
         if( _health <= 0.0f )
         {
