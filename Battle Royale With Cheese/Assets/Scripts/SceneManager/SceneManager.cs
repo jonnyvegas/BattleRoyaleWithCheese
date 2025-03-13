@@ -2,12 +2,13 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public interface ISceneNames
+public interface ISceneManager
 {
     String GetStartScene();
+    void ReloadCurrentScene();
 }
 
-public class SceneNames : MonoBehaviour, ISceneNames
+public class SceneManager : MonoBehaviour, ISceneManager
 {
     public String StartSceneName = "";
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,5 +26,9 @@ public class SceneNames : MonoBehaviour, ISceneNames
     public String GetStartScene()
     { 
         return StartSceneName; 
+    }
+    public void ReloadCurrentScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

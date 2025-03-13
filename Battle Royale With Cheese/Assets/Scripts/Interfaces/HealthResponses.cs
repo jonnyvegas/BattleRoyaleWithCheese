@@ -24,9 +24,12 @@ public class PlayerRespondZeroHealth : IRespondToZeroHealth
         Debug.Log("Responding to zero health from Player");
         if (theGameObject.TryGetComponent(out IPlayerObjectRefs theObject))
         {
-            if(theObject.GetSceneManager().TryGetComponent(out ISceneNames sceneNames))
+            if(theObject.GetSceneManager().TryGetComponent(out ISceneManager sceneManager))
             {
-                SceneManager.LoadScene(sceneNames.GetStartScene());
+                if(sceneManager != null)
+                {
+                    sceneManager.ReloadCurrentScene();
+                }
             }
             else
             {
