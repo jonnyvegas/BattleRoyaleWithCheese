@@ -8,7 +8,7 @@ public interface ISceneManager
     void ReloadCurrentScene();
 }
 
-public class SceneManager : MonoBehaviour, ISceneManager
+public class SceneManagerCustom : MonoBehaviour, ISceneManager
 {
     public String StartSceneName = "";
     // Start is called once before the first execution of Update after the MonoBehaviour is created
