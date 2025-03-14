@@ -541,6 +541,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1279309732662673957, guid: fd10e60973525964f9088e5416656bd5,
         type: 3}
+      propertyPath: ShapeModule.angle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1279309732662673957, guid: fd10e60973525964f9088e5416656bd5,
+        type: 3}
       propertyPath: moveWithTransform
       value: 1
       objectReference: {fileID: 0}
@@ -567,12 +572,12 @@ PrefabInstance:
     - target: {fileID: 1279309732662673957, guid: fd10e60973525964f9088e5416656bd5,
         type: 3}
       propertyPath: ShapeModule.m_Scale.z
-      value: 1
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1279309732662673957, guid: fd10e60973525964f9088e5416656bd5,
         type: 3}
       propertyPath: ShapeModule.radius.value
-      value: 1
+      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 1279309732662673957, guid: fd10e60973525964f9088e5416656bd5,
         type: 3}
@@ -581,8 +586,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1279309732662673957, guid: fd10e60973525964f9088e5416656bd5,
         type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 5
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1660382162630148360, guid: fd10e60973525964f9088e5416656bd5,
         type: 3}
@@ -649,6 +654,26 @@ PrefabInstance:
       propertyPath: SceneManager
       value: 
       objectReference: {fileID: 1221335794}
+    - target: {fileID: 4108830487050498544, guid: fd10e60973525964f9088e5416656bd5,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108830487050498544, guid: fd10e60973525964f9088e5416656bd5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108830487050498544, guid: fd10e60973525964f9088e5416656bd5,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108830487050498544, guid: fd10e60973525964f9088e5416656bd5,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

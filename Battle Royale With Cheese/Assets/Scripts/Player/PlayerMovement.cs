@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     CharacterController PlayerCharController;
     Transform TransformComp;
     public Transform CameraTransform;
-    private float _speed = 1000.0f;
+    private float _speed = 3333.0f;
     public float MouseSensitivity = 30.0f;
     private float _pitch = 0.0f;
     private float _yaw = 0.0f;

@@ -293,11 +293,6 @@ PrefabInstance:
       propertyPath: CollisionModule.type
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5695769396063268381, guid: 16b319a0c00e74b498f9fe4640294730,
-        type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 7480209549662346696, guid: 16b319a0c00e74b498f9fe4640294730,
         type: 3}
       propertyPath: m_LocalScale.x

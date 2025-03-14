@@ -18,7 +18,7 @@ public class EnemyAttack : MonoBehaviour
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         if (Physics.Raycast(transform.position, forward, out RaycastHit HitInfo, RaycastLength))
         {
-            Debug.Log("raycasting hit something " + HitInfo.collider.transform.gameObject.name);
+            //Debug.Log("raycasting hit something " + HitInfo.collider.transform.gameObject.name);
             Attack();
             em.rateOverTime = FiringRate;
         }
@@ -34,15 +34,26 @@ public class EnemyAttack : MonoBehaviour
         float rayLength = 100f;
         if(Physics.Raycast(ray, out RaycastHit hitInfo, rayLength))
         {
-            if(hitInfo.collider.TryGetComponent(out CharacterDamageHandler dmgHandler))
+            //if(hitInfo.collider.TryGetComponent(out IDamageHandler dmgHandler))
+            //{
+            //    dmgHandler.HandleDamage(10f, hitInfo.collider.gameObject);
+            //    Debug.Log("Found damage handler on collider. handling damage.");
+            //}
+            if(hitInfo.collider.transform.root.TryGetComponent(out IDamageHandler damageHandler))
             {
-                dmgHandler.HandleDamage(10f, hitInfo.collider.gameObject);
+                damageHandler.HandleDamage(10f, hitInfo.collider.gameObject);
+                Debug.Log("Found damage handler on parent somewhere. handling damage");
             }
-            else if(hitInfo.collider.transform.TryGetComponent(out CharacterDamageHandler damageHandler))
+            else
             {
-                damageHandler.HandleDamage(10f, hitInfo.collider.transform.gameObject);
+                Debug.Log("Did not find damage handler");
             }
+                Debug.Log("attack " + hitInfo.collider.gameObject.name);
 
+        }
+        else
+        {
+            Debug.Log("Attack raycast hit nothing.");
         }
     }
 }
