@@ -1,15 +1,22 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
     public ParticleSystem bulletParticleSystem;
+    public float TimeBetweenAttacks = 0.5f;
     private ParticleSystem.EmissionModule em;
     private int RaycastLength = 10;
     private float FiringRate = 10f;
+    private bool CanAttack = true;
+    private Coroutine CoroutineTimer;
+    private float currentTime = 0f;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         em = bulletParticleSystem.emission;
+        CoroutineTimer = StartCoroutine(BeginTimer());
     }
 
     // Update is called once per frame
@@ -19,7 +26,13 @@ public class EnemyAttack : MonoBehaviour
         if (Physics.Raycast(transform.position, forward, out RaycastHit HitInfo, RaycastLength))
         {
             //Debug.Log("raycasting hit something " + HitInfo.collider.transform.gameObject.name);
-            Attack();
+            if (CanAttack)
+            {
+                Attack();
+                StopCoroutine(CoroutineTimer);
+                CanAttack = false;
+                CoroutineTimer = StartCoroutine(BeginTimer());
+            }
             em.rateOverTime = FiringRate;
         }
         else
@@ -39,7 +52,7 @@ public class EnemyAttack : MonoBehaviour
             //    dmgHandler.HandleDamage(10f, hitInfo.collider.gameObject);
             //    Debug.Log("Found damage handler on collider. handling damage.");
             //}
-            if(hitInfo.collider.transform.root.TryGetComponent(out IDamageHandler damageHandler))
+            if(hitInfo.collider.gameObject.TryGetComponent(out IDamageHandler damageHandler))
             {
                 damageHandler.HandleDamage(10f, hitInfo.collider.gameObject);
                 Debug.Log("Found damage handler on parent somewhere. handling damage");
@@ -55,5 +68,16 @@ public class EnemyAttack : MonoBehaviour
         {
             Debug.Log("Attack raycast hit nothing.");
         }
+    }
+
+    private IEnumerator BeginTimer()
+    {
+        currentTime += Time.deltaTime;
+        if(currentTime > TimeBetweenAttacks)
+        {
+            CanAttack = true;
+            currentTime = 0f;
+        }
+        yield return null;
     }
 }
