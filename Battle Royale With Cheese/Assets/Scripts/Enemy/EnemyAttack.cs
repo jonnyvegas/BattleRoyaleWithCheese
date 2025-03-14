@@ -8,7 +8,7 @@ public class EnemyAttack : MonoBehaviour
     private ParticleSystem.EmissionModule em;
     private int RaycastLength = 10;
     private float FiringRate = 10f;
-    private bool CanAttack = true;
+    private bool CanAttack = false;
     private Coroutine CoroutineTimer;
     private float currentTime = 0f;
     
@@ -29,7 +29,7 @@ public class EnemyAttack : MonoBehaviour
             if (CanAttack)
             {
                 Attack();
-                StopCoroutine(CoroutineTimer);
+                //StopCoroutine(CoroutineTimer);
                 CanAttack = false;
                 CoroutineTimer = StartCoroutine(BeginTimer());
             }
@@ -72,12 +72,7 @@ public class EnemyAttack : MonoBehaviour
 
     private IEnumerator BeginTimer()
     {
-        currentTime += Time.deltaTime;
-        if(currentTime > TimeBetweenAttacks)
-        {
-            CanAttack = true;
-            currentTime = 0f;
-        }
-        yield return null;
+        CanAttack = true;
+        yield return new WaitForSeconds(TimeBetweenAttacks);
     }
 }
